@@ -3,7 +3,6 @@
 //=========================
 var express = require("express");
 var bodyParser = require("body-parser");
-var path = require("path");
 
 //=========================
 // Sets up the Express App
@@ -23,13 +22,9 @@ app.use(bodyParser.json());
 //=========================
 // ROUTES
 //=========================
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "home.html"));
-});
-
-app.get("/survey", function(req, res) {
-  res.sendFile(path.join(__dirname, "survey.html"));
-});
+// Configures the routes
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 //=========================
 // Starts the server to begin listening
