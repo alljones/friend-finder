@@ -3,6 +3,7 @@
 //=========================
 var express = require("express");
 var bodyParser = require("body-parser");
+var path = require("path");
 
 //=========================
 // Sets up the Express App
@@ -14,6 +15,10 @@ var PORT = process.env.PORT || 3000;
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Static files
+// needs to be called before the routes in order to work
+app.use(express.static("app/public"));
 
 //=========================
 // ROUTES
